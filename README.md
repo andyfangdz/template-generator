@@ -20,7 +20,7 @@ node dist/template-generator.js < aplusb.json
     "solution": "class Solution {\n    /*\n     * param a: The first integer\n     * param b: The second integer\n     * return: The sum of a and b\n     */\n    public int aplusb( a,  b) {\n        // write your code here, try to do it without arithmetic operators.\n    }\n};\n",
     "main": "import org.json.*;\nclass Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n         a = (scanner.nextLine());\n         b = (scanner.nextLine());\n        Solution solution = new Solution();\n        String result = (solution.aplusb(a, b));\n        System.out.println(result);\n    }\n}\n"
   }
-}%
+}
 ```
 
 ## Structure
