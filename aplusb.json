@@ -1,9 +1,9 @@
 {
-	"mname": "aplusb",
-	"params": [
-		{"name": "a", "desc": "The first integer", "type": "int"},
+  "mname": "aplusb",
+  "params": [
+    {"name": "a", "desc": "The first integer", "type": "int"},
     {"name": "b", "desc": "The second integer", "type": "int"}
-	],
+  ],
   "return": {
     "type": "int",
     "desc": "The sum of a and b"
