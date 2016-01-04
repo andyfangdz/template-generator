@@ -22,3 +22,10 @@ node dist/template-generator.js < aplusb.json
   }
 }
 ```
+
+## Structure
+
+- ```rules```: Language specific configurations
+- ```templates```: main / solution templates
+- ```index.js```: Entry point
+- ```dist```: Single-file production ready binary
