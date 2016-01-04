@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Generates code templates for technical interview questions from json file",
   "main": "index.js",
-  "scripts": {
+  "scripts":{
+    "build": "gulp && gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

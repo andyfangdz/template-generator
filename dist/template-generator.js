@@ -4994,7 +4994,7 @@
 /* 37 */
 /***/ function(module, exports) {
 
-	module.exports = "class Solution:\n    \"\"\"\n    {{#params}}\n    @param {{name}}: {{desc}}\n    {{/params}}\n    @return: {{return.desc}}\n    \"\"\"\n    def {{method}}(self{{#params}}, {{name}}{{/params}}):\n    # {{tips}}\n"
+	module.exports = "class Solution:\n    \"\"\"\n    {{#params}}\n    @param {{name}}: {{desc}}\n    {{/params}}\n    @return: {{return.desc}}\n    \"\"\"\n    def {{method}}(self{{#params}}, {{name}}{{/params}}):\n    # {{hint}}\n"
 
 /***/ },
 /* 38 */

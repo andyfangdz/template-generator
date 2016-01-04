@@ -6,4 +6,4 @@ class Solution:
     @return: {{return.desc}}
     """
     def {{method}}(self{{#params}}, {{name}}{{/params}}):
-    # {{tips}}
+    # {{hint}}
