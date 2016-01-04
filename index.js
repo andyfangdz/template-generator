@@ -2,8 +2,8 @@ var config = require('./rules/index');
 
 
 if (typeof Object.assign != 'function') {
-  (function () {
-    Object.assign = function (target) {
+  (function() {
+    Object.assign = function(target) {
       'use strict';
       if (target === undefined || target === null) {
         throw new TypeError('Cannot convert undefined or null to object');
@@ -32,43 +32,43 @@ if (typeof Object.assign != 'function') {
  *  - encoder
  */
 function patchParam(param, lang) {
-    lang = config.languages[lang];
-    return {
-        ...param,
-        ...lang.rules[param.type]
-    };
+  lang = config.languages[lang];
+  return {
+    ...param,
+    ...lang.rules[param.type]
+  };
 }
 
 function patch(problem, lang) {
-    var copy = Object.assign({}, problem);
-    copy.params.map(p => patchParam(p, lang));
-    copy.return = patchParam(copy.return, lang);
-    return copy;
+  var copy = Object.assign({}, problem);
+  copy.params.map(p => patchParam(p, lang));
+  copy.return = patchParam(copy.return, lang);
+  return copy;
 }
 
 function transform(problem) {
-    var result = {};
-    Object.keys(config.languages).map(l => result[l] = {
-        solution: config.languages[l].templates.solution(patch(problem, l)),
-        main: config.languages[l].templates.main(patch(problem, l))
-    });
-    return result;
+  var result = {};
+  Object.keys(config.languages).map(l => result[l] = {
+    solution: config.languages[l].templates.solution(patch(problem, l)),
+    main: config.languages[l].templates.main(patch(problem, l))
+  });
+  return result;
 }
 
 var stdin = process.stdin,
-    stdout = process.stdout,
-    inputChunks = [];
+  stdout = process.stdout,
+  inputChunks = [];
 
 stdin.setEncoding('utf8');
 
-stdin.on('data', function (chunk) {
-    inputChunks.push(chunk);
+stdin.on('data', function(chunk) {
+  inputChunks.push(chunk);
 });
 
-stdin.on('end', function () {
-    var inputJSON = inputChunks.join(),
-        parsedData = JSON.parse(inputJSON);
-    stdout.write(JSON.stringify(transform(parsedData), null, 2));
+stdin.on('end', function() {
+  var inputJSON = inputChunks.join(),
+    parsedData = JSON.parse(inputJSON);
+  stdout.write(JSON.stringify(transform(parsedData), null, 2));
 });
 
 module.exports = transform;
