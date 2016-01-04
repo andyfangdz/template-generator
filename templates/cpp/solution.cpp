@@ -6,7 +6,7 @@ class Solution {
      {{/params}}
      * return: {{return.desc}}
      */
-    {{return.repr}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {
+    {{return.repr}}{{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {
         // {{hint}}
     }
 };

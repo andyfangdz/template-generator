@@ -1,5 +1,5 @@
 {
-  "mname": "aplusb",
+  "method": "aplusb",
   "params": [
     {"name": "a", "desc": "The first integer", "type": "int"},
     {"name": "b", "desc": "The second integer", "type": "int"}
