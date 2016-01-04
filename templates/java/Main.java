@@ -1,4 +1,3 @@
-import org.json.*;
 class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -6,7 +5,7 @@ class Main {
         {{repr}} {{name}} = {{parser}}(scanner.nextLine());
         {{/params}}
         Solution solution = new Solution();
-        String result = {{retEncoder}}(solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}));
+        String result = {{return.encoder}}(solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}));
         System.out.println(result);
     }
 }

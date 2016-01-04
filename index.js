@@ -41,7 +41,7 @@ function patchParam(param, lang) {
 
 function patch(problem, lang) {
   var copy = Object.assign({}, problem);
-  copy.params.map(p => patchParam(p, lang));
+  copy.params = copy.params.map(p => patchParam(p, lang));
   copy.return = patchParam(copy.return, lang);
   return copy;
 }
