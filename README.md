@@ -22,7 +22,7 @@ node dist/template-generator.js < aplusb.json
   }
 }
 ```
-
+## Results
 ### C++
 #### ```solution.cpp```
 ```cpp
