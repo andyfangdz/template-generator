@@ -55,6 +55,6 @@ gulp.task("build", function() {
   );
   return gulp.src("./index.js")
     .pipe(webpackStream(myConfig))
-    .pipe(concat('template-generator.js'))
+    .pipe(concat('template-generator.min.js'))
     .pipe(gulp.dest("dist"));
 })
