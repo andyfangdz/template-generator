@@ -3,9 +3,9 @@ class Solution {
      {{#params}}
      * param {{name}}: {{desc}}
      {{/params}}
-     * return: {{retdesc}}
+     * return: {{return.desc}}
      */
-    public {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {
+    public {{return.repl}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {
         // {{hint}}
     }
 };
