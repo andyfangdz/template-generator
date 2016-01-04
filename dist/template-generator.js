@@ -106,8 +106,8 @@
 	module.exports = {
 	    "languages": {
 	        cpp: __webpack_require__(2),
-	        python: __webpack_require__(34),
-	        java: __webpack_require__(35)
+	        python: __webpack_require__(36),
+	        java: __webpack_require__(39)
 	    },
 	    "types": ["int", "int[]", "int&"]
 	};
@@ -131,8 +131,8 @@
 	        }
 	    },
 	    templates: {
-	        "solution": Handlebars.compile("class Solution {\npublic:\n    /*\n     {{#params}}\n     * param {{name}}: {{desc}}\n     {{/params}}\n     * return: {{retdesc}}\n     */\n    {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {\n        // {{hint}}\n    }\n};\n"),
-	        "main": Handlebars.compile("int main() {\n    string data;\n    std::getline(std::cin, data);\n    //load the data -> data[]\n    {{#params}}\n    {{repr}} {{name}} = {{parser}}(data[{{@index}}]);\n    {{/params}}\n    Solution solution;\n    std::cout << solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}) << std::endl;\n    return 0;\n}")
+	        "solution": Handlebars.compile(__webpack_require__(34)),
+	        "main": Handlebars.compile(__webpack_require__(35))
 	    }
 	};
 
@@ -4929,6 +4929,18 @@
 
 /***/ },
 /* 34 */
+/***/ function(module, exports) {
+
+	module.exports = "class Solution {\n    public:\n    /*\n     {{#params}}\n     * param {{name}}: {{desc}}\n     {{/params}}\n     * return: {{retdesc}}\n     */\n    {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {\n        // {{hint}}\n    }\n};\n"
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	module.exports = "int main() {\n    {{#params}}\n    string data;\n    std::getline(std::cin, data);\n    {{repr}} {{name}} = {{parser}}(data);\n    {{/params}}\n    Solution solution;\n    std::cout << {{retEncoder}}(solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}})) << std::endl;\n    return 0;\n}\n"
+
+/***/ },
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4946,13 +4958,25 @@
 	        }
 	    },
 	    templates: {
-	        "solution": Handlebars.compile("class Solution {\npublic:\n    /*\n     {{#params}}\n     * param {{name}}: {{desc}}\n     {{/params}}\n     * return: {{retdesc}}\n     */\n    {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {\n        // {{hint}}\n    }\n};\n"),
-	        "main": Handlebars.compile("int main() {\n    string data;\n    std::getline(std::cin, data);\n    //load the data -> data[]\n    {{#params}}\n    {{repr}} {{name}} = {{parser}}(data[{{@index}}]);\n    {{/params}}\n    Solution solution;\n    std::cout << solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}) << std::endl;\n    return 0;\n}")
+	        "solution": Handlebars.compile(__webpack_require__(37)),
+	        "main": Handlebars.compile(__webpack_require__(38))
 	    }
 	};
 
 /***/ },
-/* 35 */
+/* 37 */
+/***/ function(module, exports) {
+
+	module.exports = "class Solution:\n    \"\"\"\n    {{#params}}\n    @param {{name}}: {{desc}}\n    {{/params}}\n    @return: {{retdesc}}\n    \"\"\"\n    def {{method}}(self{{#params}}, {{name}}{{/params}}):\n    # {{tips}}\n"
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	module.exports = "import sys\n\n{{#params}}\n{{name}} = {{parser}}(sys.stdin.readline())\n{{/params}}\nsolution = Solution()\nprint {{retEncoder}}(solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}))\n"
+
+/***/ },
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -4970,10 +4994,22 @@
 	        }
 	    },
 	    templates: {
-	        "solution": Handlebars.compile("class Solution {\npublic:\n    /*\n     {{#params}}\n     * param {{name}}: {{desc}}\n     {{/params}}\n     * return: {{retdesc}}\n     */\n    {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {\n        // {{hint}}\n    }\n};\n"),
-	        "main": Handlebars.compile("int main() {\n    string data;\n    std::getline(std::cin, data);\n    //load the data -> data[]\n    {{#params}}\n    {{repr}} {{name}} = {{parser}}(data[{{@index}}]);\n    {{/params}}\n    Solution solution;\n    std::cout << solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}) << std::endl;\n    return 0;\n}")
+	        "solution": Handlebars.compile(__webpack_require__(40)),
+	        "main": Handlebars.compile(__webpack_require__(41))
 	    }
 	};
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports = "class Solution {\n    /*\n     {{#params}}\n     * param {{name}}: {{desc}}\n     {{/params}}\n     * return: {{retdesc}}\n     */\n    public {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {\n        // {{hint}}\n    }\n};\n"
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "import org.json.*;\nclass Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        {{#params}}\n        {{repr}} {{name}} = {{parser}}(scanner.nextLine());\n        {{/params}}\n        Solution solution = new Solution();\n        String result = {{retEncoder}}(solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}));\n        System.out.println(result);\n    }\n}\n"
 
 /***/ }
 /******/ ]);

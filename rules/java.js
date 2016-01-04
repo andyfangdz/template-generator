@@ -11,29 +11,7 @@ module.exports = {
         }
     },
     templates: {
-        "solution": Handlebars.compile(`class Solution {
-public:
-    /*
-     {{#params}}
-     * param {{name}}: {{desc}}
-     {{/params}}
-     * return: {{retdesc}}
-     */
-    {{rettype}} {{method}}({{#params}}{{repr}} {{name}}{{#unless @last}}, {{/unless}}{{/params}}) {
-        // {{hint}}
-    }
-};
-`),
-        "main": Handlebars.compile(`int main() {
-    string data;
-    std::getline(std::cin, data);
-    //load the data -> data[]
-    {{#params}}
-    {{repr}} {{name}} = {{parser}}(data[{{@index}}]);
-    {{/params}}
-    Solution solution;
-    std::cout << solution.{{method}}({{#params}}{{name}}{{#unless @last}}, {{/unless}}{{/params}}) << std::endl;
-    return 0;
-}`)
+        "solution": Handlebars.compile(require("raw!../templates/java/Solution.java")),
+        "main": Handlebars.compile(require("raw!../templates/java/Main.java"))
     }
 }
