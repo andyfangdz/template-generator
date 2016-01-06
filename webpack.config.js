@@ -4,7 +4,9 @@ module.exports = {
     target: 'node',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'template-generator.js'
+        filename: 'template-generator.js',
+        // export itself to a global var
+        libraryTarget: "commonjs2"
     },
     module: {
         loaders: [{

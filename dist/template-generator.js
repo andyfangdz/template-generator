@@ -1,3 +1,4 @@
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -106,22 +107,30 @@
 	  return result;
 	}
 
-	var stdin = process.stdin,
-	    stdout = process.stdout,
-	    inputChunks = [];
+	if (typeof global !== 'undefined') {
+	  var stdinPipe = function stdinPipe() {
+	    var stdin = process.stdin,
+	        stdout = process.stdout,
+	        inputChunks = [];
 
-	stdin.setEncoding('utf8');
+	    stdin.setEncoding('utf8');
 
-	stdin.on('data', function (chunk) {
-	  inputChunks.push(chunk);
-	});
+	    stdin.on('data', function (chunk) {
+	      inputChunks.push(chunk);
+	    });
 
-	stdin.on('end', function () {
-	  var inputJSON = inputChunks.join(),
-	      parsedData = JSON.parse(inputJSON);
-	  stdout.write(JSON.stringify(transform(parsedData), null, 2));
-	});
+	    stdin.on('end', function () {
+	      var inputJSON = inputChunks.join(),
+	          parsedData = JSON.parse(inputJSON);
+	      stdout.write(JSON.stringify(transform(parsedData), null, 2));
+	    });
+	  };
 
+	  stdinPipe();
+	}
+	if (typeof window !== 'undefined') {
+	  window.Transform = transform;
+	}
 	module.exports = transform;
 
 /***/ },
