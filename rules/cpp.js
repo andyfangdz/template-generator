@@ -8,6 +8,11 @@ module.exports = {
             repr: "int",
             parser: "parseInt",
             encoder: "defaultEncoder"
+        },
+        "double": {
+            repr: "double",
+            parser: "parseDouble",
+            encoder: "defaultEncoder"
         }
     },
     templates: {
